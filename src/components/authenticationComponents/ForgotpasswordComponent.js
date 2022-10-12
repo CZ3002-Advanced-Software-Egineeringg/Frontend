@@ -22,11 +22,12 @@ const link =
     float: "right",
 }
 
-const SignupComponent = () => {
+const ForgotpasswordComponent = () => {
 
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const confirmPasswordRef = useRef();
+  const newPasswordRef = useRef();
+  const newConfirmPasswordRef = useRef();
+  const otpRef = useRef();
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -38,19 +39,19 @@ const SignupComponent = () => {
     setError("");
 
     //proceed to do more form validation here
-    if (passwordRef.current.value !== confirmPasswordRef.current.value )
+    if (newPasswordRef.current.value !== newConfirmPasswordRef.current.value )
     {
 
-      failedAlert("Sign up unsuccessful!", "Passwords do not match. Please try again!") 
-      //console.log(passwordRef.current.value,confirmPasswordRef.current.value)
+      failedAlert("Reset unsuccessful!", "Passwords do not match. Please try again!");
+      //console.log(newPasswordRef.current.value,newConfirmPasswordRef.current.value)
       return;
     }
 
     //post user data to backeend
-
+    
 
     // if successfully registered
-    successAlert("Registration Success", "Succesfully registered an account! Redirecting you to home page!");
+    successAlert("Password reset successfully!");
   }
 
 
@@ -59,25 +60,28 @@ const SignupComponent = () => {
     <div className={styles.signup}>
       <Card className={styles["signup-card"]}>
             <Card.Body>
-              <p className="mb-1" style={{fontSize:  "46px", fontWeight: "650", textAlign: "center"}}>Register Account</p>
+              <p className="mb-1" style={{fontSize:  "46px", fontWeight: "650", textAlign: "center"}}>Reset Password</p>
               <p style={{ color: "#495057", fontSize: "17px",textAlign: "center", fontWeight: '500' }}>
-                Please enter your details
+                Please enter the details
               </p>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group id="email" className={styles.fields}>
-                  <Form.Label><p className={styles.title}>Email</p></Form.Label>
-                  <Form.Control type="email" required ref={emailRef} />
+                    <Form.Control type="email" required ref={emailRef} placeholder="Enter email"/>
                 </Form.Group>
                 <Form.Group id="password" className={styles.fields}>
-                  <Form.Label><p className={styles.title} >Password</p></Form.Label>
-                  <Form.Control type="password" required ref={passwordRef} />
+                    <Form.Control type="password" required ref={newPasswordRef} placeholder="Enter new password"/>
                 </Form.Group>
                 <Form.Group id="confirmpassword" className={styles.fields}>
-                  <Form.Label><p className={styles.title} >Confirm Password</p></Form.Label>
-                  <Form.Control type="password" required ref={confirmPasswordRef} />
+                    <Form.Control type="password" required ref={newConfirmPasswordRef} placeholder="Confirm password"/>
                 </Form.Group>
-                {/*<p style = {link}>Forgot password</p>*/}
+                <button type="button" className={"w-100 mt-1" + " " + styles["login-btn"]}>
+                    Send OTP
+                </button>
+                <Form.Group id="otp" className={styles.fields}>
+                    <Form.Control type="number" required ref={otpRef} placeholder="Enter OTP"/>
+                </Form.Group>
+                
                 <button
                   disabled={loading}
                   type="submit"
@@ -85,14 +89,13 @@ const SignupComponent = () => {
                   whileHover={{
                     backgroundColor: "#f95738",
                     boxShadow: "0px 0px 8px #ff9f1c", 
-                  }}
-                >
+                  }}>
                   Sign up
                 </button>
               </Form>
               
               <div className="w-100 text-center mt-2">
-                Already have an account? <span style={{fontWeight: "600"}}><Link to="/login">Log in</Link></span>
+                {/*Already have an account?*/} <span style={{fontWeight: "600"}}><Link to="/login">Go back to log in</Link></span>
               </div>
             </Card.Body>
           </Card>
@@ -102,4 +105,4 @@ const SignupComponent = () => {
   )
 }
 
-export default SignupComponent
+export default ForgotpasswordComponent
