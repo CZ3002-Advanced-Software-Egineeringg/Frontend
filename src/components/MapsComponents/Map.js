@@ -11,7 +11,7 @@ import styles from "../../styles/mapStyles/map.module.css";
 import {useAuth} from "../../context/AuthContext";
 
 //api key 
-const apiKey ='AIzaSyA8e2MxscEYHjSUKmXGFqV5iGtlkcC6ja8';
+const apiKey ='';
 
 //locations
 const centerSingapore = {lat: 1.352 , lng:103.820 };
