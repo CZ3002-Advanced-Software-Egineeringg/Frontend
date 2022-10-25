@@ -13,7 +13,7 @@ import { useFilter } from '../../context/FilterContext';
 import axios from 'axios';
 
 //api key 
-const apiKey ='';
+const apiKey ='AIzaSyA8e2MxscEYHjSUKmXGFqV5iGtlkcC6ja8';
 
 //locations
 const centerSingapore = {lat: 1.352 , lng:103.820 };
